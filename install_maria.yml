@@ -13,7 +13,7 @@
    - name: Ejecutar paquete
      shell: ./tmp/mariadb_repo_setup
    
-     - name: Dependencias
+   - name: Dependencias
      yum:
        name: perl-DBI libaio libsepol lsof boost-program-options
        state: present 
