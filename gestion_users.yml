@@ -1,11 +1,11 @@
 ---
-- hosts: all
+- name: Crear usuarios
+  hosts: all
+  become: yes
   vars:
     user_db_1: ops1
     user_db_2: ops2
     user_web_3: ops3   
-  become: yes
-  
   tasks:
   - name: Crear Grupos
     group:
