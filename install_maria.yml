@@ -16,11 +16,11 @@
    - name: Dependencias
      yum:
        name: 
-        -perl-DBI 
-        -libaio 
-        -libsepol 
-        -lsof 
-        -boost-program-options
+         - perl-DBI 
+         - libaio 
+         - libsepol 
+         - lsof 
+         - boost-program-options
        state: present 
        
    - name: Install MYSQL
