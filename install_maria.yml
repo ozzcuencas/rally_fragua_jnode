@@ -4,15 +4,15 @@
    vars:
      mysql_root_password: passwd
    tasks:
-   - name: Download foo.conf
+   - name: Download maria db installer
      get_url:
         url: https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
         dest: /tmp
         mode: '0755' 
         
    - name: Ejecutar paquete
-     shell: ./tmp/mariadb_repo_setup
-   
+     shell: chmod +x /tmp/mariadb_repo_setup; cd /tmp; ./mariadb_repo_setup
+     
    - name: Dependencias
      yum:
        name: perl-DBI libaio libsepol lsof boost-program-options
