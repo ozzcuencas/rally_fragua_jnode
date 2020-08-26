@@ -44,7 +44,7 @@
     file: path=/home/{{ user_web_3 }}/.ssh state=directory
 
   - name: chown and chmod of ssh dir
-    file: path=/home/{{ user_web_3 }}/.ssh recurse=yes owner={{ user_db_3 }} group={{ group_2 }} mode=0700 state=directory        
+    file: path=/home/{{ user_web_3 }}/.ssh recurse=yes owner={{ user_web_3 }} group={{ group_2 }} mode=0700 state=directory        
  
   - name: copy sudoers file for safety
     command: cp -f /etc/sudoers /etc/sudoers.tmp
