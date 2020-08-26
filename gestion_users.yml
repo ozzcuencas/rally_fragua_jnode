@@ -7,7 +7,7 @@
     user_db_2: ops2
     user_web_3: ops3 
     group_1: dbadmin
-    group_2: webadmi
+    group_2: webadmin
   tasks:
   - name: Crear Grupos 1
     group:
