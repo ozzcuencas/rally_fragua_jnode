@@ -38,19 +38,19 @@
     file: path=/home/{{ user_db_2 }}/.ssh recurse=yes owner={{ user_db_2 }} group={{ group_1}} mode=0700 state=directory        
         
   - name: create user ops3
-    user: name={{ user_db_3 }} shell=/bin/bash
+    user: name={{ user_web_3 }} shell=/bin/bash
   
   - name: create ssh dir
-    file: path=/home/{{ user_db_3 }}/.ssh state=directory
+    file: path=/home/{{ user_web_3 }}/.ssh state=directory
 
   - name: chown and chmod of ssh dir
-    file: path=/home/{{ user_db_3 }}/.ssh recurse=yes owner={{ user_db_3 }} group={{ group_2 }} mode=0700 state=directory        
+    file: path=/home/{{ user_web_3 }}/.ssh recurse=yes owner={{ user_db_3 }} group={{ group_2 }} mode=0700 state=directory        
  
   - name: copy sudoers file for safety
     command: cp -f /etc/sudoers /etc/sudoers.tmp
 
   - name: add nopassword user
-    lineinfile: dest=/etc/sudoers.tmp line="{{ ops3 }} ALL=(ALL:ALL) NOPASSWD:ALL"
+    lineinfile: dest=/etc/sudoers.tmp line="{{user_web_3 }} ALL=(ALL:ALL) NOPASSWD:ALL"
  
   - name: copy tmp file to real file with visudo check
     shell: visudo -q -c -f /etc/sudoers.tmp && cp -f /etc/sudoers.tmp /etc/sudoers
