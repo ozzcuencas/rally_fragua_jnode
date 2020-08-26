@@ -7,11 +7,16 @@
     user_db_2: ops2
     user_web_3: ops3   
   tasks:
-  - name: Crear Grupos
+  - name: Crear Grupos 1
     group:
-       name: dbadmin, webadmin
+       name: dbadmin
        state: present
-    
+  
+  - name: Crear Grupos 2
+    group:
+       name: webadmin
+       state: present  
+       
   - name: create user ops1
     user: name={{ user_db_1 }} shell=/bin/bash
   
