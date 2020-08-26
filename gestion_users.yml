@@ -5,7 +5,9 @@
   vars:
     user_db_1: ops1
     user_db_2: ops2
-    user_web_3: ops3   
+    user_web_3: ops3 
+    group_1: dbadmin
+    group_2: webadmi
   tasks:
   - name: Crear Grupos 1
     group:
@@ -21,28 +23,28 @@
     user: name={{ user_db_1 }} shell=/bin/bash
   
   - name: create ssh dir
-    file: path=/home/{{ dbadmin}}/.ssh state=directory
+    file: path=/home/{{ user_db_1 }}/.ssh state=directory
   
   - name: chown and chmod of ssh dir
-    file: path=/home/{{ dbadmin }}/.ssh recurse=yes owner={{ user_db_1}} group={{ dbadmin }} mode=0700 state=directory
+    file: path=/home/{{ user_db_1 }}/.ssh recurse=yes owner={{ user_db_1}} group={{ group_1 }} mode=0700 state=directory
         
   - name: create user ops2
-    user: name={{ ops2 }} shell=/bin/bash
+    user: name={{ user_db_2 }} shell=/bin/bash
 
   - name: create ssh dir
-    file: path=/home/{{ dbadmin}}/.ssh state=directory
+    file: path=/home/{{ user_db_2 }}/.ssh state=directory
 
   - name: chown and chmod of ssh dir
-    file: path=/home/{{ dbadmin }}/.ssh recurse=yes owner={{ ops2 }} group={{ dbadmin }} mode=0700 state=directory        
+    file: path=/home/{{ user_db_2 }}/.ssh recurse=yes owner={{ user_db_2 }} group={{ group_1}} mode=0700 state=directory        
         
   - name: create user ops3
-    user: name={{ ops3 }} shell=/bin/bash
+    user: name={{ user_db_3 }} shell=/bin/bash
   
   - name: create ssh dir
-    file: path=/home/{{ webadmin}}/.ssh state=directory
+    file: path=/home/{{ user_db_3 }}/.ssh state=directory
 
   - name: chown and chmod of ssh dir
-    file: path=/home/{{ webadmin }}/.ssh recurse=yes owner={{ ops3 }} group={{ dbadmin }} mode=0700 state=directory        
+    file: path=/home/{{ user_db_3 }}/.ssh recurse=yes owner={{ user_db_3 }} group={{ group_2 }} mode=0700 state=directory        
  
   - name: copy sudoers file for safety
     command: cp -f /etc/sudoers /etc/sudoers.tmp
